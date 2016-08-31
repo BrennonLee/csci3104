@@ -38,7 +38,7 @@ def merge(lefthalf, righthalf, array):
     return array
 
 
-array = [1, 8, 16, 3, 2, 9, 4, 5];
+array = [8, 1, 16, 3, 2, 9, 4, 5];
 lower = 0;
 upper = len(array)
 mergesort(array)

@@ -1,4 +1,5 @@
 #!/usr/bin/python
+#question 1c
 def commonElm(a, b):
     i = 0
     j = 0
