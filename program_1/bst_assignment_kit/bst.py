@@ -45,16 +45,13 @@ class Node:
             print("is none falling in here?")
             return
 
-        if ((self.left != None) and (self.right != None)):
-            return self.left.inorder_traversal(ret_list) and self.right.inorder_traversal(ret_list)
-
         if (self.left != None):
-            return self.left.inorder_traversal(ret_list)
+            self.left.inorder_traversal(ret_list)
 
         ret_list.append(self.key)
 
         if (self.right != None):
-            return self.right.inorder_traversal(ret_list)
+            self.right.inorder_traversal(ret_list)
 
         return ret_list
 
