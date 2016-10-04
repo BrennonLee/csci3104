@@ -40,7 +40,7 @@ class Node:
                 return
 
     def inorder_traversal(self, ret_list):
-        print("self is: ", self.key)
+        # print("self is: ", self.key)
         if (self == None):
             print("is none falling in here?")
             return
