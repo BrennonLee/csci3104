@@ -1,3 +1,7 @@
+
+# Name: Brennon Lee
+# On my honor as a University of Colorado Student, this code was entirely written by myself with no unauthorized help.
+
 # This class implements a Binary Search Tree Class
 # The binary search tree class will include functionality of
 #   1. Insert a Node in the Tree.
@@ -10,8 +14,6 @@
 #    If right is None then the node has no right child.
 
 
-# Name: Brennon Lee
-# On my honor as a University of Colorado Student, this code was entirely written by myself with no unauthorized help.
 
 class Node:
 
