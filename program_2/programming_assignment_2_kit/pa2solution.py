@@ -12,12 +12,14 @@ import random
 #
 # Acknowledged By: Brennon Lee
 
+sys.setrecursionlimit(30000)
+
 def partition(A,l,r):
-    pivot = A[r]
+    pivot = A[r][0]
     i = l-1
     j = l
     for j in range(l,r):
-        if(A[j] <= pivot):
+        if(A[j][0] <= pivot):
             i = i + 1
             A[i],A[j] = A[j],A[i]
     A[i+1],A[r] = A[r],A[i+1]
@@ -31,31 +33,62 @@ def quicksort(A,l,r):
     return A
 
 def free_time_intervals(interval_lst, T):
-    # First design the algorithm on pen/paper before you attempt this
     if (len(interval_lst)-1 < 0):
         return
 
     sorted_list = quicksort(interval_lst,0, len(interval_lst)-1)
-    print ("sorted list is: ",sorted_list)
-    print('\n')
-
+    # sorted_list = sorted(interval_lst)
+    # print ("sorted list is: ",sorted_list)
+    # print('\n')
     b = []
     latest = 0
 
     for i in range(len(sorted_list)):
         if (latest > T):
             return
-        if (sorted_list[i][0] > latest):
+        if (sorted_list[i][0] > T) and (sorted_list[i][0] > latest):
+            b.append((latest, T))
+        elif (sorted_list[i][0] > latest):
             b.append((latest, sorted_list[i][0]))
-            latest = max(latest, sorted_list[i][1])
+        latest = max(latest, sorted_list[i][1])
+        # print ("Latest is now: ", latest)
     if latest < T:
         b.append((latest,T))
+    # print(b)
     return b
 
 def max_logged_in(interval_lst,T):
-    # First design the algorithm on pen/paper and solve a few examples.
-    return None
+    if (len(interval_lst)-1 < 0):
+        return
 
+    b = []
+    count = 0
+    Max = 0
+    minTime = T
+
+    for i in range(len(interval_lst)):
+
+        b.append((interval_lst[i][0], 1))
+        b.append((interval_lst[i][1], -1))
+
+    sorted_b = quicksort(b,0,len(b)-1)
+    # print (b)
+
+    for i in range(len(sorted_b)):
+        # print("count is:  ", count, "count + sorted_b: ", count + sorted_b[i][1] )
+        count = count + sorted_b[i][1]
+        # time = sorted_b[i][0]
+        # if (sorted_b[i][0] == latest[0]) and (sorted_b[i][1] != latest[1]):
+            # count = count + sorted_b[i][1]
+        # latest = (sorted_b[i][0],sorted_b[i][1])
+        if (Max < count):
+            minTime = sorted_b[i][0]
+
+        Max = max(Max, count)
+        # minTime = min(minTime, time)
+
+
+    return (Max,minTime)
 
 
 if __name__ == '__main__':
