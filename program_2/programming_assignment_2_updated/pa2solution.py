@@ -12,6 +12,12 @@ import random
 #
 # Acknowledged By: Brennon Lee
 
+# Brennon Lee
+# 103419905
+# On my honor as a University of Colorado student, I acknowledge that
+# I did not receive any unauthorized help for this assignment.
+# I understand that systems like MOSS can easily detect code plagiarism.
+
 sys.setrecursionlimit(30000)
 
 def partition(A,l,r):

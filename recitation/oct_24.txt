@@ -1,0 +1,81 @@
+CSCI 3104 Assignment 8
+
+Problem 1
+part A)
+    a = [1, 5, 2, 3, 8]
+      Write dynamic programming for longest subsequence.
+      LIS(a,j,M) where a is array, of the first j elements, that are less than M.
+
+      example lis(a,3,2) find the first 3 elements in a that are less than 2.
+      ans --> would be [1]
+
+      example list(a,5,inf) would be [1,2,3,5,8]
+
+
+part B)
+    find the first 0 elements that are less than M
+
+part C)
+    recurrence for LIS(a,j,M) where 1 <= J <= n
+
+        base case for 0 and 1. General for anything else?
+
+part D)
+
+    Look at subsequences from up till that point.
+
+                {   LIS(a,j-1,M)
+    LIS(a,j,M)= {
+          max   {  1 + LIS(a,?? ,?? )
+
+    a[k] < M
+
+part E)
+
+      LIS(a,j,a[j])
+
+                  need: -base cases
+                        -Looping
+                        -build memo table
+                        - loop over j and k
+                        -use base cases from part D (just implement it)
+                        -return length and subsequence
+                    j
+      __|_0__1_____________________________________n-1_
+    a[0]| *
+    a[1]|
+    a[2]|
+        |
+        |
+k       |
+        |
+        |
+        |
+    a[k]|
+        |
+        |
+        |
+
+
+Problem 2
+part A)
+
+    paths from zero to 13.
+    build a table for each node and how many paths there are to 13 starting from 13 down to 0.
+    nodes| # path to 13
+      13 |    1
+      12 |    1
+      11 |    1
+      10 |    1
+       9 |    2
+       8 |    3
+         |
+         |
+
+Problem 3
+part A)
+    minimize the number of jumps
+    if beyond 17, return inf
+    -two choices, want one with a smaller cost, Min( make jump =1 , make jump = 2 ) inside each one has two possibilities
+                                                  Dependent on energy bar. land on one or dont. land on posion or not. (base case for poison.)
+                                                  based on energy bar, go to minsteps(pos+1,E+4) land on energy bar with one jump case.
