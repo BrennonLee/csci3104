@@ -30,7 +30,7 @@ class MyTrieNode:
                 print("current char is: ", char, "and self.isEndWord is: ", self.isWordEnd)
             self = self.next[char]    #move self to the next character in the word.
         self.isWordEnd = True   #once out of loop, you are at the end of the word.
-        print("character at end of word is: ", char, "and value if endword is: ", self.isWordEnd)
+        print("character at end of word is: ", char, "and value of endword is: ", self.isWordEnd)
         self.count = self.count + 1 #increase frequency of how many times w is added
         print("word added was: ",w, "and self.count is: " , self.count)
         print('\n')
@@ -43,8 +43,8 @@ class MyTrieNode:
             # print ("chars in w are: ",self.next)
             # print ("count is: ", count)
             if char in self.next:
-                print("current char in word is: ", char)
                 self= self.next[char]
+                print("current char in word is: ", char)
                 print ("value of endword is: ", self.isWordEnd)
         print("\n")
         if (self.isWordEnd == True):
@@ -66,25 +66,28 @@ class MyTrieNode:
         for char in w:
             # print ("char is: ",char)
             # array = array.join(char)
-            if (char in self.next):
-                self = self.next[char]
+            if char in self.next:
+                self = self.next[char]  #loop through all the characters as far as we can
                 # print("self.isWordEnd is: ", self.isWordEnd)
-
-                 #loop through all the characters as far as we can
                 # print ("combined array is: ", array)
         # cursor = MyTrieNode(False)
         # cursor = self
-        self = self.next
-        print("entering child loop")
+        print("Current char is: ", char, "and self.next is: ", self.next)
         word = [w]
+        whole_word = []
+        if (self.isWordEnd == True) and (self.next):
+            whole_word.append(word)
+            self = self.next
         for each in self.next:
             # print ("self.next value is", self.next)
             print ("each value is: ",each)
             # print("self.isWordEnd is: ", self.isWordEnd)
             while (self.isWordEnd != True):
                 # print("self value is: ", self.next)
-                word.append( self.next )
+                word.append( each )
+                print ("word is: ", word)
                 self = self.next[char]
+            print("\n")
             whole_word = ''.join(word)
         print ("whole word is: ", whole_word)
         return (whole_word)

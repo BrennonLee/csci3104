@@ -1,0 +1,81 @@
+Written assignment number 9
+
+problem1
+  Contradiction proofs
+
+  part b)
+    show that p --> q
+      assume contradiction of q and logically go forward until you come across a contradiction.
+
+  S1:
+    prove t1 <= uj
+
+        Suppose not, suppose t1 > uj.
+        if t1 is greater than uj, then a celebrity will leave at uj and
+        will not see the ad played at t1. Therefore not all the celebrities will see the ad played.
+        This is a contradiction since each celebrity is supposed to see the ads.
+
+        Also suggests that t2, t3, .... tk > uj
+
+  s2:
+    prove t1 <= li, it can be deleted and rest of ads form valid solution.
+
+    1-assume invalid solution after deletion.
+    2-which means that some celebrity is uncovered or doesnt see the ad.
+    3-but every celebrity will see an ad since it implies t2, t3 ... tk <= li, so this is a contradiction since the solution is valid!
+
+    suppose not, if t1 <= li
+
+
+problem2
+  use hashtable, then for each element in list, if T- fist value is equal to any other element in list, then you found a pair that add up to 28.
+
+
+
+                ANSWERS TO WRITTEN HOMEWORK
+
+
+                                                  Time Table
+|---------------------------------------------------------------------------------------------------------------------------------|
+  (2<---------------------->53)
+      (5<---------------->50)
+      (5<----------------------------------------->98)
+                                                      (102<----------------------------->150)
+                                                                            (120<------------------------------>186)
+                                            (85<----------------------------------------------------------------------->190)
+
+
+Problem 1
+  a) For this given scenario and set of time intervals, there is only one solution that the greedy algorithm will select and that solution
+        remains to be the best one.
+
+  b)
+      S1:
+        prove t1 <= uj
+
+            Suppose not, suppose t1 > uj.
+            if t1 is greater than uj, then a celebrity will leave at uj and
+            will not see the ad played at t1. If that is the case, then not all the celebrities will see the ad played.
+            This is a contradiction since each celebrity is supposed to see an ad.
+
+      S2:
+        prove t1 < lj, it can be deleted and rest of ads form valid solution.
+
+          Suppose not, suppose t1 < lj, it can be deleted and rest of the ads will NOT form a valid solution.
+          If this is the case, then t1 will be deleted and a celebrity will be left uncovered. But we know this is not the case.
+          Since lj represents the time when our first to leave celebrity enters, then we know that any time up until uj will form a valid solution time.
+          Therefore this is a contradiction if t1 is deleted and the rest of the ads will not form a valid solution.
+
+      S3:
+        prove If t1 < uj then t1 can be modified to be equal to uj, while still remaining a valid solution.
+
+          Suppose not, suppose t1<uj and t1 is modified to equal uj, Then it will NOT remain a valid solution.
+          If this is the case, then t1 will equal uj. uj represents the earliest time that the first celebrity will leave.
+          Since the end of the intervals are inclusive, this is a contradiction and t1 will still be a valid solution since every celebrity will see an ad.
+
+  c)    def GreedyAlgo(list):
+
+
+
+  Problem 2
+    a)
