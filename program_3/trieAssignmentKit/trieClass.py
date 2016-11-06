@@ -1,7 +1,11 @@
-#LastName:
-#FirstName:
-#Email:
-#Comments:
+# Name: Brennon Lee
+# Email: Brle1617@colorado.edu
+# Student ID:	103419905
+# On my honor as a University of Colorado student, I acknowledge that
+# I did not receive any unauthorized help for this assignment.
+# I understand that systems like MOSS can easily detect code plagiarism.
+
+
 
 from __future__ import print_function
 import sys
@@ -26,72 +30,58 @@ class MyTrieNode:
         for char in w:        #for each letter in the word
             if char not in self.next:   #if this letter is not a child of the current letter, ADD IT!
                 self.next[char] = MyTrieNode(False)
-                     #make child part of the trie
-                print("current char is: ", char, "and self.isEndWord is: ", self.isWordEnd)
             self = self.next[char]    #move self to the next character in the word.
         self.isWordEnd = True   #once out of loop, you are at the end of the word.
-        print("character at end of word is: ", char, "and value of endword is: ", self.isWordEnd)
         self.count = self.count + 1 #increase frequency of how many times w is added
-        print("word added was: ",w, "and self.count is: " , self.count)
-        print('\n')
         return
 
     def lookupWord(self,w):
-        print("word is: ", w)
         for char in w:
-            # print ("Looking for char: ", char)
-            # print ("chars in w are: ",self.next)
-            # print ("count is: ", count)
-            if char in self.next:
+            if char in self.next.keys():
                 self= self.next[char]
-                print("current char in word is: ", char)
-                print ("value of endword is: ", self.isWordEnd)
-        print("\n")
+            else:
+                return 0;
         if (self.isWordEnd == True):
             return self.count
-        # Return frequency of occurrence of the word w in the trie
-        # returns a number for the frequency and 0 if the word w does not occur.
 
-        # YOUR CODE HERE
         return 0
 
 
+    def dfs(self, word, x):
+        for char in self.next.keys():
+            if (self.next[char].isWordEnd == True):
+                tup = (word+char, self.next[char].count)
+                x.append(tup)
+            self.next[char].dfs(word+char,x)
+        return x
+
+
+
+
     def autoComplete(self,w):
-        #Returns possible list of autocompletions of the word w
-        #Returns a list of pairs (s,j) denoting that
-        #         word s occurs with frequency j
-        #YOUR CODE HERE
-        print("Word to complete: ", w)
-        print ('\n')
-        for char in w:
-            # print ("char is: ",char)
-            # array = array.join(char)
+        List = []
+        x = []
+
+        if (self.lookupWord(w)):        #check to find if w passed in is already a completed word
+            tup = (w, self.lookupWord(w))
+            List.append(tup)
+
+
+        word_count = 0
+        word_length = len(w)
+        for char in w:                  #Loop through as far as we can with given word
             if char in self.next:
-                self = self.next[char]  #loop through all the characters as far as we can
-                # print("self.isWordEnd is: ", self.isWordEnd)
-                # print ("combined array is: ", array)
-        # cursor = MyTrieNode(False)
-        # cursor = self
-        print("Current char is: ", char, "and self.next is: ", self.next)
-        word = [w]
-        whole_word = []
-        if (self.isWordEnd == True) and (self.next):
-            whole_word.append(word)
-            self = self.next
-        for each in self.next:
-            # print ("self.next value is", self.next)
-            print ("each value is: ",each)
-            # print("self.isWordEnd is: ", self.isWordEnd)
-            while (self.isWordEnd != True):
-                # print("self value is: ", self.next)
-                word.append( each )
-                print ("word is: ", word)
+                word_count += 1
                 self = self.next[char]
-            print("\n")
-            whole_word = ''.join(word)
-        print ("whole word is: ", whole_word)
-        return (whole_word)
-        return [('Walter',1),('Mitty',2),('Went',3),('To',4),('Greenland',2)] #TODO: change this line, please
+
+        if (word_count != word_length): #if how far we loop doesnt match the word, then return []
+            return []
+        dfs_array = self.dfs(w,x)        #Else go into dfs to return all possible words
+
+        List += (dfs_array)             #Add dfs_array to our list
+
+
+        return List
 
 
 

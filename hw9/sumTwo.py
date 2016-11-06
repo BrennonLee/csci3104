@@ -17,8 +17,6 @@ def sumTwo(a, T):
         else:
             return False
 
-
-
     # for i in range(n):
     #     target = T - a[i]
     #     # print("current elm is: ", a[i])
@@ -29,8 +27,6 @@ def sumTwo(a, T):
     #             # print("elm has been added! ", a[i])
     #             ans.append(a[j])
     # return ans
-
-
 def sumThree(a,T):
     n = len(a)
     i, j = 0,0
@@ -51,8 +47,6 @@ def sumThree(a,T):
             # return (answer, a[j])
         # else:
             # return ("none found")
-
-
 
 if (__name__ == '__main__'):
 
